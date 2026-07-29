@@ -1,0 +1,31 @@
+<!-- Menú móvil -->
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Menú de navegación" aria-modal="true">
+  <a href="{{ '/#disciplinas' | relative_url }}" class="mobile-link">Disciplinas</a>
+  <a href="{{ '/#metodo' | relative_url }}" class="mobile-link">Método</a>
+  <a href="{{ '/#industrias' | relative_url }}" class="mobile-link">Industrias</a>
+  <a href="{{ '/#nosotros' | relative_url }}" class="mobile-link">Nosotros</a>
+  <a href="{{ '/#faq' | relative_url }}" class="mobile-link">Preguntas</a>
+  <a href="{{ '/#contacto' | relative_url }}" class="m-cta mobile-link">Cuéntanos tu pregunta</a>
+</div>
+
+<!-- Barra de navegación -->
+<nav class="nav" id="mainNav" aria-label="Navegación principal">
+  <div class="nav-inner">
+    <a href="{{ '/' | relative_url }}" class="nav-logo" aria-label="Apex Data Cloud España — inicio">
+      <img src="{{ '/assets/img/logo-128.png' | relative_url }}" alt="Logotipo de Apex Data Cloud" width="30" height="30">
+      <span class="nav-logo-text">Apex <span>Data</span> Cloud</span>
+      <span class="nav-locale" aria-hidden="true">España</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="{{ '/#disciplinas' | relative_url }}">Disciplinas</a></li>
+      <li><a href="{{ '/#metodo' | relative_url }}">Método</a></li>
+      <li><a href="{{ '/#industrias' | relative_url }}">Industrias</a></li>
+      <li><a href="{{ '/#nosotros' | relative_url }}">Nosotros</a></li>
+      <li><a href="{{ '/#faq' | relative_url }}">Preguntas</a></li>
+      <li><a href="{{ '/#contacto' | relative_url }}" class="nav-cta">Haznos una pregunta</a></li>
+    </ul>
+    <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir o cerrar el menú" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
