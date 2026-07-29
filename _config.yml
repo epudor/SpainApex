@@ -1,0 +1,67 @@
+# ============================================================
+#  Apex Data Cloud España — apexdata.es
+#  Jekyll configuration
+# ============================================================
+
+title: "Apex Data Cloud España"
+tagline: "Consultoría de IA, Datos y Machine Learning"
+description: >-
+  Apex Data Cloud España ayuda a las organizaciones a responder las preguntas
+  que nunca han podido responder: convertimos los datos en decisiones con
+  inteligencia artificial, machine learning, analítica predictiva, sistemas RAG
+  e ingeniería de datos. Madrid, España y Europa.
+
+url: "https://www.apexdata.es"
+baseurl: ""
+
+lang: "es-ES"
+locale: "es_ES"
+
+# --- Brand / contact -----------------------------------------
+email: "ezequiel@apexdata.cloud"
+linkedin: "https://www.linkedin.com/company/apex-data-cloud"
+# Versión optimizada para tarjetas sociales y datos estructurados.
+# El original de 1024 px vive en /apex_logo.PNG (1,5 MB) y no se sirve.
+logo: "/assets/img/logo-512.png"
+city: "Madrid"
+region: "Comunidad de Madrid"
+country: "ES"
+
+# --- Parent company ------------------------------------------
+parent_company: "Apex Data Cloud LLC"
+parent_url: "https://apexdata.cloud"
+parent_location: "Orlando, Florida, EE. UU."
+
+# --- Analytics (opcional) ------------------------------------
+# Deja vacío para no cargar Google Analytics. Si lo rellenas, necesitarás
+# un banner de consentimiento de cookies para cumplir con el RGPD.
+ga4_id: ""
+
+# --- Build ---------------------------------------------------
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+plugins:
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+sass:
+  style: compressed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - vendor
+  - .github
+  - _reference
+  # Original de 1024 px y 1,5 MB. Se conserva en el repositorio como activo
+  # de origen, pero no se publica: el sitio sirve las versiones optimizadas
+  # de assets/img/ (19 KB y 276 KB).
+  - apex_logo.PNG
+
+# Nota: no usamos `defaults` para el layout. Cada página declara el suyo, de
+# modo que robots.txt (layout: null) no corre el riesgo de heredar una
+# plantilla HTML por una fusión de valores nulos.
