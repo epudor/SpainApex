@@ -1,0 +1,62 @@
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+
+    <div class="f-brand">
+      <div class="f-brand-row">
+        <img src="{{ '/assets/img/logo-128.png' | relative_url }}" alt="Apex Data Cloud" width="28" height="28">
+        <span class="f-brand-name">Apex Data Cloud España</span>
+      </div>
+      <p class="f-brand-desc">Consultoría de inteligencia artificial, analítica de datos y machine learning. Ayudamos a organizaciones de Madrid, España y Europa a responder las preguntas que nunca han podido responder.</p>
+      <p class="f-parent">Apex Data Cloud España es la filial española de <a href="{{ site.parent_url }}/" rel="noopener">{{ site.parent_company }}</a>, con sede en {{ site.parent_location }}.</p>
+      <div class="f-social" aria-label="Contacto">
+        <a href="mailto:{{ site.email }}" class="f-social-link" aria-label="Escribir a Apex Data Cloud España">&#9993;</a>
+        <a href="{{ site.linkedin }}" class="f-social-link" aria-label="Apex Data Cloud en LinkedIn" rel="noopener" target="_blank">in</a>
+      </div>
+    </div>
+
+    <div class="f-col">
+      <h5>Disciplinas</h5>
+      <ul role="list">
+        <li><a href="{{ '/#disciplinas' | relative_url }}">Consultoría de IA</a></li>
+        <li><a href="{{ '/#disciplinas' | relative_url }}">Machine learning</a></li>
+        <li><a href="{{ '/#disciplinas' | relative_url }}">IA generativa y LLM</a></li>
+        <li><a href="{{ '/#disciplinas' | relative_url }}">Sistemas RAG</a></li>
+        <li><a href="{{ '/#disciplinas' | relative_url }}">Ingeniería de datos</a></li>
+        <li><a href="{{ '/#disciplinas' | relative_url }}">Analítica y atribución</a></li>
+      </ul>
+    </div>
+
+    <div class="f-col">
+      <h5>Compañía</h5>
+      <ul role="list">
+        <li><a href="{{ '/#nosotros' | relative_url }}">Por qué Apex</a></li>
+        <li><a href="{{ '/#metodo' | relative_url }}">Nuestro método</a></li>
+        <li><a href="{{ '/#industrias' | relative_url }}">Industrias</a></li>
+        <li><a href="{{ '/#faq' | relative_url }}">Preguntas frecuentes</a></li>
+        <li><a href="{{ '/#contacto' | relative_url }}">Contacto</a></li>
+        <li><a href="{{ site.parent_url }}/" rel="noopener">Apex Data Cloud (EE. UU.)</a></li>
+      </ul>
+    </div>
+
+    <div class="f-col">
+      <h5>Legal</h5>
+      <ul role="list">
+        <li><a href="{{ '/aviso-legal/' | relative_url }}">Aviso legal</a></li>
+        <li><a href="{{ '/privacidad/' | relative_url }}">Política de privacidad</a></li>
+        <li><a href="{{ '/privacidad/#cookies' | relative_url }}">Cookies</a></li>
+        <li><a href="mailto:{{ site.email }}">{{ site.email }}</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="f-copy">&copy; {{ site.time | date: "%Y" }} Apex Data Cloud España &middot; {{ site.parent_company }}. Todos los derechos reservados. &nbsp;|&nbsp; Madrid &middot; España y Europa.</div>
+    <div class="f-bottom-links">
+      <a href="{{ '/#disciplinas' | relative_url }}">Disciplinas</a>
+      <a href="{{ '/aviso-legal/' | relative_url }}">Aviso legal</a>
+      <a href="{{ '/privacidad/' | relative_url }}">Privacidad</a>
+      <a href="mailto:{{ site.email }}">Escríbenos</a>
+    </div>
+  </div>
+</footer>
