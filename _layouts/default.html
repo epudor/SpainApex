@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'es-ES' }}">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+{%- assign page_title = page.title | default: site.title -%}
+{%- assign page_desc = page.description | default: site.description | strip_newlines | strip -%}
+{%- assign page_url = page.url | replace: 'index.html', '' | absolute_url -%}
+{%- assign page_image = page.image | default: site.logo | absolute_url -%}
+
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_desc | strip_html | escape }}">
+{%- if page.keywords %}
+<meta name="keywords" content="{{ page.keywords | escape }}">
+{%- endif %}
+<link rel="canonical" href="{{ page_url }}">
+<meta name="robots" content="{% if page.noindex %}noindex, follow{% else %}index, follow, max-image-preview:large, max-snippet:-1{% endif %}">
+<meta name="author" content="Apex Data Cloud España">
+
+<!-- Idioma / relación con la matriz -->
+<link rel="alternate" hreflang="es-ES" href="{{ page_url }}">
+{%- if page.url == '/' %}
+<link rel="alternate" hreflang="en" href="{{ site.parent_url }}/">
+<link rel="alternate" hreflang="x-default" href="{{ site.parent_url }}/">
+{%- endif %}
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="{{ site.locale | default: 'es_ES' }}">
+<meta property="og:site_name" content="Apex Data Cloud España">
+<meta property="og:title" content="{{ page_title | escape }}">
+<meta property="og:description" content="{{ page_desc | strip_html | escape }}">
+<meta property="og:url" content="{{ page_url }}">
+<meta property="og:image" content="{{ page_image }}">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ page_title | escape }}">
+<meta name="twitter:description" content="{{ page_desc | strip_html | escape }}">
+<meta name="twitter:image" content="{{ page_image }}">
+
+<!-- Iconos -->
+<link rel="icon" href="{{ '/assets/img/logo-128.png' | relative_url }}" type="image/png">
+<link rel="apple-touch-icon" href="{{ '/assets/img/logo-512.png' | relative_url }}">
+<meta name="theme-color" content="#0E0E11">
+
+<!-- Tipografías -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ '/assets/css/apex.css' | relative_url }}">
+
+<!-- ============================================================
+     DATOS ESTRUCTURADOS
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "{{ site.url }}/#organization",
+      "name": "Apex Data Cloud España",
+      "alternateName": "Apex Data Cloud",
+      "url": "{{ site.url }}/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "{{ site.logo | absolute_url }}"
+      },
+      "image": "{{ site.logo | absolute_url }}",
+      "email": "{{ site.email }}",
+      "description": {{ site.description | strip_newlines | strip | jsonify }},
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "{{ site.parent_company }}",
+        "url": "{{ site.parent_url }}/",
+        "location": "{{ site.parent_location }}"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "{{ site.city }}",
+        "addressRegion": "{{ site.region }}",
+        "addressCountry": "{{ site.country }}"
+      },
+      "areaServed": [
+        { "@type": "Country", "name": "España" },
+        { "@type": "Place", "name": "Unión Europea" }
+      ],
+      "knowsLanguage": ["es-ES", "en"],
+      "sameAs": ["{{ site.linkedin }}", "{{ site.parent_url }}/"],
+      "knowsAbout": [
+        "Inteligencia artificial",
+        "Machine learning",
+        "Analítica predictiva",
+        "Ingeniería de datos",
+        "IA generativa",
+        "Sistemas RAG",
+        "Segmentación de clientes",
+        "Gobierno del dato",
+        "RGPD"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ site.url }}/#website",
+      "url": "{{ site.url }}/",
+      "name": "Apex Data Cloud España",
+      "inLanguage": "es-ES",
+      "publisher": { "@id": "{{ site.url }}/#organization" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "{{ page_url }}#webpage",
+      "url": "{{ page_url }}",
+      "name": {{ page_title | jsonify }},
+      "description": {{ page_desc | strip_html | jsonify }},
+      "inLanguage": "es-ES",
+      "isPartOf": { "@id": "{{ site.url }}/#website" },
+      "about": { "@id": "{{ site.url }}/#organization" }
+    }{% if page.services %},
+    {
+      "@type": "OfferCatalog",
+      "@id": "{{ site.url }}/#servicios",
+      "name": "Disciplinas de Apex Data Cloud España",
+      "itemListElement": [
+        {%- for s in page.services %}
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": {{ s.name | jsonify }},
+            "description": {{ s.desc | jsonify }},
+            "provider": { "@id": "{{ site.url }}/#organization" },
+            "areaServed": { "@type": "Country", "name": "España" }
+          }
+        }{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      ]
+    }{% endif %}{% if page.faqs %},
+    {
+      "@type": "FAQPage",
+      "@id": "{{ page_url }}#faq",
+      "inLanguage": "es-ES",
+      "mainEntity": [
+        {%- for faq in page.faqs %}
+        {
+          "@type": "Question",
+          "name": {{ faq.q | jsonify }},
+          "acceptedAnswer": { "@type": "Answer", "text": {{ faq.a | jsonify }} }
+        }{% unless forloop.last %},{% endunless %}
+        {%- endfor %}
+      ]
+    }{% endif %}
+  ]
+}
+</script>
+
+<!-- ============================================================
+     ANALÍTICA (desactivada por defecto)
+     Rellena `ga4_id` en _config.yml para activarla. Si lo haces,
+     necesitarás un banner de consentimiento de cookies conforme
+     al RGPD y a la LSSI-CE antes de cargar este script.
+     ============================================================ -->
+{%- if site.ga4_id and site.ga4_id != "" %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.ga4_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.ga4_id }}', { anonymize_ip: true });
+</script>
+{%- else %}
+<script>/* Sin analítica: gtag se define como no-op para los manejadores de eventos. */
+  window.gtag = window.gtag || function(){};</script>
+{%- endif %}
+</head>
+
+<body>
+<div class="apex-site">
+
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  {% include nav.html %}
+
+  <main id="main">
+    {{ content }}
+  </main>
+
+  {% include footer.html %}
+
+</div>
+<script src="{{ '/assets/js/apex.js' | relative_url }}" defer></script>
+</body>
+</html>
